@@ -11,11 +11,12 @@ public class Umrandungsbot extends AdvancedRobot {
 
 	@Override
 	public void run() {
+		turnGunRight(90);
 		turnLeft(getHeading() % 90);
 		while (true) {
-			ahead(4);
+			setAhead(richtung * 5);
+			execute();
 		}
-
 	}
 
 	@Override
@@ -30,14 +31,7 @@ public class Umrandungsbot extends AdvancedRobot {
 
 	@Override
 	public void onHitByBullet(HitByBulletEvent event) {
-
-		if (richtung == -1) {
-			turnLeft(180);
-			richtung = 1;
-		} else if (richtung == 1) {
-			turnRight(180);
-			richtung = -1;
-		}
+		richtung = richtung * (-1);
 	}
 
 }

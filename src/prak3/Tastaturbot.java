@@ -12,20 +12,12 @@ public class Tastaturbot extends AdvancedRobot {
 
 	@Override
 	public void run() {
-//		turnLeft(getHeading() % 90);
-//		turnGunRight(90);
-//		while(true) {
-//			ahead(1000);
-//			turnRight(90);
-//		}
-
 		while (true) {
 			//Wie schnell der Roboter fahren soll
 			setAhead(10 * fahrtrichtung);
 			
 			//Wie schnell sich der Roboter drehen soll
 			setTurnRight(45 * drehrichtung);
-
 			execute();
 		}
 
