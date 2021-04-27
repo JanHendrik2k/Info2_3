@@ -1,15 +1,16 @@
 package prak3;
 
 import java.awt.event.KeyEvent;
-
 import robocode.AdvancedRobot;
-import robocode.ScannedRobotEvent;
 
 public class Tastaturbot extends AdvancedRobot {
 
 	int drehrichtung = 0;
 	int fahrtrichtung = 0;
 
+	/**
+	 * Starte das Programm und setzt die richtung und drehung in einer Dauerschleife
+	 */
 	@Override
 	public void run() {
 		while (true) {
@@ -64,6 +65,9 @@ public class Tastaturbot extends AdvancedRobot {
 
 	}
 
+	/**
+	 * Was passiert wenn ein Key losgelassen wird
+	 */
 	@Override
 	public void onKeyReleased(KeyEvent e) {
 		switch (e.getKeyCode()) {
