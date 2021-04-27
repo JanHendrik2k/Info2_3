@@ -5,7 +5,7 @@ import java.awt.event.KeyEvent;
 import robocode.AdvancedRobot;
 import robocode.ScannedRobotEvent;
 
-public class RoboterTest extends AdvancedRobot {
+public class Tastaturbot extends AdvancedRobot {
 
 	int drehrichtung = 0;
 	int fahrtrichtung = 0;
