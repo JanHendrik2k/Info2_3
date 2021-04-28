@@ -1,9 +1,12 @@
 package prak3;
 
+import java.awt.Color;
+
 import robocode.AdvancedRobot;
 import robocode.HitByBulletEvent;
 import robocode.HitWallEvent;
 import robocode.ScannedRobotEvent;
+import robocode.WinEvent;
 
 public class Umrandungsbot extends AdvancedRobot {
 
@@ -17,10 +20,11 @@ public class Umrandungsbot extends AdvancedRobot {
 	 */
 	@Override
 	public void run() {
+		setColors(Color.YELLOW, Color.GREEN, Color.PINK, Color.BLUE, Color.WHITE);
 		turnGunRight(90);
 		turnLeft(getHeading() % 90);
 		while (true) {
-			setAhead(richtung * 5);
+			setAhead(richtung * 10);
 			execute();
 		}
 	}
@@ -48,5 +52,15 @@ public class Umrandungsbot extends AdvancedRobot {
 	public void onHitByBullet(HitByBulletEvent event) {
 		richtung = richtung * (-1);
 	}
+	
+	@Override
+	public void onWin(WinEvent event) {
+			setColors(Color.GREEN, Color.GREEN, Color.GREEN, Color.GREEN, Color.GREEN);
+		for (int i = 0; i < 50; i++) {
+			turnLeft(50);
+			turnRight(50);
+		}
+	}
+	
 
 }
