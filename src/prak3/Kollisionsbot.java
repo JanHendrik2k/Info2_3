@@ -6,6 +6,11 @@ import robocode.AdvancedRobot;
 import robocode.ScannedRobotEvent;
 import robocode.WinEvent;
 
+/**
+ * OP Roboter mit Aimbot, da es kein Anti cheat in Robocode gibt
+ * @author Jan Hendrik
+ *
+ */
 public class Kollisionsbot extends AdvancedRobot {
 	
 	boolean isLeft = true;
@@ -42,11 +47,13 @@ public class Kollisionsbot extends AdvancedRobot {
 		} else {
 			isLeft = false;
 		}
-//		setTurnRight(0);
 		ahead(SPEED);
 		fire(1);
 	}
 	
+	/**
+	 * Fortnite Dance, wenn man gewonnen hat
+	 */
 	@Override
 	public void onWin(WinEvent event) {
 			setColors(Color.GREEN, Color.GREEN, Color.GREEN, Color.GREEN, Color.GREEN);

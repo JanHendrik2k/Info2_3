@@ -6,6 +6,11 @@ import robocode.AdvancedRobot;
 import robocode.BattleEndedEvent;
 import robocode.WinEvent;
 
+/**
+ * Roboter, welcher mit W, A, S, D, SPACE gesteuert werden kann.
+ * @author Jan Hendrik
+ *
+ */
 public class Tastaturbot extends AdvancedRobot {
 
 	int drehrichtung = 0;
@@ -13,7 +18,7 @@ public class Tastaturbot extends AdvancedRobot {
 	int krebs = 1;
 
 	/**
-	 * Starte das Programm und setzt die richtung und drehung in einer Dauerschleife
+	 * Starte das Programm und setzt die Geschwindigkeit und Drehung in einer Dauerschleife
 	 */
 	@Override
 	public void run() {
@@ -114,6 +119,9 @@ public class Tastaturbot extends AdvancedRobot {
 		}
 	}
 	
+	/**
+	 * Fortnite Dance, wenn man gewonnen hat
+	 */
 	@Override
 	public void onWin(WinEvent event) {
 			setColors(Color.GREEN, Color.GREEN, Color.GREEN, Color.GREEN, Color.GREEN);
