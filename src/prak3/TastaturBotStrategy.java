@@ -1,53 +1,38 @@
 package prak3;
 
-import java.awt.Color;
 import java.awt.event.KeyEvent;
-import robocode.AdvancedRobot;
-import robocode.WinEvent;
 
-/**
- * Roboter, welcher mit W, A, S, D, SPACE gesteuert werden kann.
- * @author Jan Hendrik
- *
- */
-public class Tastaturbot extends AdvancedRobot {
+import robocode.AdvancedRobot;
+import robocode.Event;
+import robocode.ScannedRobotEvent;
+
+public class TastaturBotStrategy implements Strategy {
 
 	int drehrichtung = 0;
 	int fahrtrichtung = 0;
 	int farbschema = 1;
-
-	/**
-	 * Starte das Programm und setzt die Geschwindigkeit und Drehung in einer Dauerschleife
-	 */
-	@Override
-	public void run() {
-
-		while (true) {
-			if (farbschema == 1) {
-				setColors(Color.BLACK, Color.RED, Color.YELLOW, Color.GREEN, Color.RED);
-				
-			}
-			
-			if (farbschema == -1) {
-				setColors(Color.WHITE, Color.BLUE, Color.GRAY, Color.BLUE, Color.RED);
-			}
-
-			// Wie schnell der Roboter fahren soll
-			setAhead(10 * fahrtrichtung);
-
-			// Wie schnell sich der Roboter drehen soll
-			setTurnRight(45 * drehrichtung);
-			execute();
-			farbschema = farbschema*(-1);
-		}
-
+	AdvancedRobot ar;
+	
+	public void identify(AdvancedRobot r) {
+		ar = r;
 	}
 
-	/**
-	 * Was passiert wenn ein Key gedrueckt wird
-	 */
-	@Override
-	public void onKeyPressed(KeyEvent e) {
+	public void move() {
+			// Wie schnell der Roboter fahren soll
+			ar.setAhead(10 * fahrtrichtung);
+
+			// Wie schnell sich der Roboter drehen soll
+			ar.setTurnRight(45 * drehrichtung);
+			ar.execute();
+			farbschema = farbschema * (-1);
+		}
+
+
+	public void reactEvent(Event e) {
+		return;
+	}
+
+	public void reactOnKeyPressed(KeyEvent e) {
 		switch (e.getKeyCode()) {
 
 		// W oder K: Fahrtrichtung nach vorne einstellen
@@ -76,19 +61,17 @@ public class Tastaturbot extends AdvancedRobot {
 
 		// SPACE: feuer, peng peng
 		case KeyEvent.VK_SPACE:
-			fire(1000);
+			ar.fire(1000);
 			break;
 		default:
 			break;
 		}
 
-	}
+		
 
-	/**
-	 * Was passiert wenn ein Key losgelassen wird
-	 */
-	@Override
-	public void onKeyReleased(KeyEvent e) {
+	}
+	
+	public void reactOnKeyReleased(KeyEvent e) {
 		switch (e.getKeyCode()) {
 		// W oder K: Fahrtrichtung resetten
 		case KeyEvent.VK_W:
@@ -116,18 +99,11 @@ public class Tastaturbot extends AdvancedRobot {
 		default:
 			break;
 		}
+		
 	}
-	
-	/**
-	 * Fortnite Dance, wenn man gewonnen hat
-	 */
-	@Override
-	public void onWin(WinEvent event) {
-			setColors(Color.GREEN, Color.GREEN, Color.GREEN, Color.GREEN, Color.GREEN);
-		for (int i = 0; i < 50; i++) {
-			turnLeft(50);
-			turnRight(50);
-		}
+
+	public void fire(ScannedRobotEvent e) {
+		return;
 	}
-	
+
 }
